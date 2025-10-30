@@ -51,8 +51,7 @@ class Settings:
     github_installation_id: str = os.getenv("GITHUB_INSTALLATION_ID", "92310619")
     github_org: str = os.getenv("GITHUB_ORG", "derijk")
     # Optional: Personal Access Token for user-owned repo operations
-    github_pat: str = os.getenv("GITHUB_PAT", "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")
-
+    
     # Email (Resend)
     resend_api_key: str = os.getenv("RESEND_API_KEY", "re_Mrjfbmg3_ELFz3xTKN9q6SZiBoS7X1zax")
 
