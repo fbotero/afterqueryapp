@@ -18,23 +18,20 @@ def get_engine() -> AsyncEngine:
         db_url = settings.database_url
         if not db_url:
             raise ValueError("DATABASE_URL is not set or is empty")
+        
+        # Convert postgresql:// to postgresql+asyncpg://
         if db_url.startswith("postgresql://"):
             db_url = db_url.replace("postgresql://", "postgresql+asyncpg://", 1)
         elif not db_url.startswith("postgresql+asyncpg://"):
             if "://" not in db_url:
                 raise ValueError(f"Invalid database URL format: {db_url[:20]}...")
+        
         _engine = create_async_engine(
             db_url,
             pool_pre_ping=True,
             pool_size=5,
             max_overflow=10,
-            pool_recycle=3600,  
-            connect_args={
-                "statement_cache_size": 0,
-                "server_settings": {
-                    "jit": "off"
-                }
-            }
+            pool_recycle=3600
         )
         _session_factory = sessionmaker(bind=_engine, class_=AsyncSession, expire_on_commit=False, autoflush=False, autocommit=False)
     return _engine 
