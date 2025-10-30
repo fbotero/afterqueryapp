@@ -18,7 +18,11 @@ settings = get_settings()
 # Explicitly allow the frontend origin so CORS headers are emitted on all responses
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://afterqueryapp-production.vercel.app",
+        "https://*.vercel.app",  # For preview deployments
+    ],
     allow_credentials=False,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allow_headers=["*"],
@@ -35,7 +39,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
         return Response(
             status_code=200,
             headers={
-                "Access-Control-Allow-Origin": "http://localhost:3000",
+                "Access-Control-Allow-Origin": "https://afterqueryapp-production.vercel.app",
                 "Access-Control-Allow-Credentials": "false",
                 "Access-Control-Allow-Methods": "*",
                 "Access-Control-Allow-Headers": "*",
@@ -45,7 +49,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
         status_code=exc.status_code,
         content={"detail": exc.detail},
         headers={
-            "Access-Control-Allow-Origin": "http://localhost:3000",
+            "Access-Control-Allow-Origin": "https://afterqueryapp-production.vercel.app",
             "Access-Control-Allow-Credentials": "false",
             "Access-Control-Allow-Methods": "*",
             "Access-Control-Allow-Headers": "*",
