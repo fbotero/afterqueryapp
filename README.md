@@ -6,7 +6,8 @@
 1. PASTE YOUR DEMO VIDEO LINK HERE:
 https://drive.google.com/file/d/1wGSPX9OoWHAP9dwlyzWlpgICRDLdR_fZ/view?usp=sharing
 2. PASTE A LINK TO YOUR PRODUCTION DEPLOYMENT HERE
-3. MAKE SURE TO FILL OUT .ENV.EXAMPLE
+https://afterqueryapp-pshgpog0z-felipes-projects-c00da106.vercel.app/
+4. MAKE SURE TO FILL OUT .ENV.EXAMPLE
 
 # Full Stack Starter Template
 
