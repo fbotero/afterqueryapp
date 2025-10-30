@@ -2,3 +2,7 @@ fastapi
 uvicorn
 sqlalchemy
 pydantic
+httpx
+PyJWT
+cryptography
+asyncpg
